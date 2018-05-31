@@ -1,30 +1,67 @@
 function getMatchesByDay(dayId,state){
-  let goalsDay1 = state.goals.filter(({matchNumber }) => matchNumber   === 2)
-  let twoTeams = findColorTeam(state.teams,goalsDay1);
-  
-  function findColorTeam(teams,goalsDay){
-    let colorsTeam = [];
-    for(let i = 0; i < goalsDay.length; i++){
-      for(let j = 0; j < teams.length; j++){
-        if(goalsDay[i].team === teams[j].color){
-          colorsTeam.push(goalsDay[i].team);
-        }
-      }
-    }
-    let twoColors = [];
-    let colors;
-    for(let i = 0; i< colorsTeam.length; i++){
-      if(colorsTeam[i] !== colors){
-        twoColors.push(colorsTeam[i]);
-        colors = colorsTeam[i];
-      } 
-    }
-    return twoColors;
+  let matches = [];
+  for(let k = 0; k < state.matches.length; k++){
+    matches.push({matchNr: k+1});
   }
 
-  // .filter(({team}) => team === "blue")
-    // .reduce((sum,record) => sum + record.id)
-  return twoTeams;
+  for(let k = 0; k < matches.length; k++){
+    let goalsDay1 = state.goals.filter(({matchNumber }) => matchNumber   === matches[k].matchNr)
+    let twoTeams = findColorTeams(state.teams,goalsDay1);
+    matches[k].teams = twoTeams;
+    let goalsInMatch = findGoalsInMatch(twoTeams,goalsDay1);
+    matches[k].goals = goalsInMatch;
+    let goalscorers;
+    for(let i = 0; i < 2; i++){
+      goalscorers = findGoalscorers(twoTeams[i],goalsDay1);
+      if(i === 0){
+        matches[k].goalscorers_1 = goalscorers;
+      } else {
+        matches[k].goalscorers_2 = goalscorers;
+      }
+    }
+
+    function findColorTeams(teams,goalsDay){
+      let colorsTeam = [];
+      for(let i = 0; i < goalsDay.length; i++){
+        for(let j = 0; j < teams.length; j++){
+          if(goalsDay[i].team === teams[j].color){
+            colorsTeam.push(goalsDay[i].team);
+          }
+        }
+      }
+      let twoColors = [];
+      let colors;
+      for(let i = 0; i< colorsTeam.length; i++){
+        if(colorsTeam[i] !== colors){
+          twoColors.push(colorsTeam[i]);
+          colors = colorsTeam[i];
+        } 
+      }
+      return twoColors;
+    }
+
+    function findGoalsInMatch(teams,goalsDay){
+      let goalsTeams = [];
+      for(let i = 0; i < 2; i++){
+        goalsTeams.push(goalsDay.filter(({team}) => team === teams[i]).length);
+      }
+      return goalsTeams;
+    }
+    
+    function findGoalscorers(teams,goalsDay){
+      let goalscorers = [];
+      let goals;
+      for(let i = 0; i < 1; i++){
+        goals = goalsDay.filter(({team}) => team === teams)
+        for(let j = 0; j < goals.length; j++){
+          goalscorers.push(goals[j].player);
+        }
+      }
+      return goalscorers;
+    }
+  }
+  
+  return matches;
 
 }
 console.log(getMatchesByDay(
