@@ -130,7 +130,7 @@ const NextRow = ({ days, state }) => {
     
     return <div key={i} className="row">
       <div className="col-sm-1"></div>
-      <div className={`col-sm-4 border text-center bg-warning`} >
+      <div className={`col-sm-4 border text-center ${p.teams[0] === 1 ? "bg-warning" : p.teams[0] === 2 ? "bg-primary" : "bg-white"}`} >
         {p.goalscorers_1.join(', ')}
       </div>
       <div className="col-sm-1 border text-center bg-secondary text-light">
@@ -139,7 +139,7 @@ const NextRow = ({ days, state }) => {
       <div className="col-sm-1 border text-center bg-secondary text-light">
         {p.goals[1]}
       </div>
-      <div className={`col-sm-4 border text-center bg-primary }`}>
+      <div className={`col-sm-4 border text-center ${p.teams[1] === 1 ? "bg-warning" : p.teams[1] === 2 ? "bg-primary" : "bg-white"}`}>
         {p.goalscorers_2.join(', ')}
       </div>
       <div className="col-sm-1"></div>
