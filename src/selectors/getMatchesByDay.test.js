@@ -35,8 +35,6 @@ it('findColorTeams', () => {
 it('findGoalsInMatch', () => {
   const result = findGoalsInMatch([
     1 , 2
-    // { id: 1, color: "orange" },
-    // { id: 2, color: "blue" },
   ],
   [
     { id: 0, matchId: 1, playerId: 4, teamId: 1 },

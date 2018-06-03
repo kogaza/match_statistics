@@ -44,9 +44,6 @@ export function findGoalscorers(team,goalsDay){
 //-------------------------------------------------------------------------
 export function getMatchesByDay(dayId,state){
   let matches = state.matches.filter(m => m.dayId === dayId);
-  // for(let k = 0; k < state.matches.length; k++){
-  //   matches.push({matchNr: k+1});
-  // }
 
   for(let k = 0; k < matches.length; k++){
     let goalsDay1 = state.goals.filter(({matchId }) => matchId   === matches[k].id);
