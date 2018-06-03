@@ -14,7 +14,12 @@ class App extends Component {
         { id: 3, name: "Jacek" },
         { id: 4, name: "Mateusz" },
         { id: 5, name: "Michał" },
-        { id: 6, name: "Paweł" }
+        { id: 6, name: "Paweł" },
+        { id: 7, name: "Karol" },
+        { id: 8, name: "Janek" },
+        { id: 9, name: "Leon" },
+        { id: 10, name: "Alan" },
+        { id: 11, name: "Wojtek" }
       ],
       teams: [
         { id: 0, color: "white" },
@@ -22,31 +27,31 @@ class App extends Component {
         { id: 2, color: "blue" }
       ],
       days: [
-        {id: 1},
-        {id: 2}
+        { id: 1 },
+        { id: 2 }
       ],
       goals: [
-        { id: 0, matchNumber: 1, player: "Mateusz", team: "orange" },
-        { id: 1, matchNumber: 1, player: "Michał", team: "blue" },
-        { id: 2, matchNumber: 1, player: "Paweł", team: "blue" },
-        { id: 3, matchNumber: 1, player: "Jacek", team: "blue" },
-        { id: 4, matchNumber: 2, player: "Karol", team: "white" },
-        { id: 5, matchNumber: 2, player: "Janek", team: "white" },
-        { id: 6, matchNumber: 2, player: "Leon", team: "blue" },
-        { id: 7, matchNumber: 2, player: "Jacek", team: "blue" },
-        { id: 8, matchNumber: 3, player: "Karol", team: "white" },
-        { id: 9, matchNumber: 3, player: "Piotrek", team: "white" },
-        { id: 10, matchNumber: 3, player: "Karol", team: "white" },
-        { id: 11, matchNumber: 3, player: "Alan", team: "white" },
-        { id: 12, matchNumber: 3, player: "Mateusz", team: "orange" },
-        { id: 13, matchNumber: 3, player: "Wojtek", team: "orange" },
-        { id: 14, matchNumber: 3, player: "Jan", team: "orange" },
+        { id: 0, matchId: 1, playerId: 4, teamId: 1 },
+        { id: 1, matchId: 1, playerId: 5, teamId: 2 },
+        { id: 2, matchId: 1, playerId: 6, teamId: 2 },
+        { id: 3, matchId: 1, playerId: 3, teamId: 2 },
+        { id: 4, matchId: 2, playerId: 7, teamId: 0 },
+        { id: 5, matchId: 2, playerId: 8, teamId: 0 },
+        { id: 6, matchId: 2, playerId: 9, teamId: 2 },
+        { id: 7, matchId: 2, playerId: 3, teamId: 2 },
+        { id: 8, matchId: 3, playerId: 7, teamId: 0 },
+        { id: 9, matchId: 3, playerId: 2, teamId: 0 },
+        { id: 10, matchId: 3, playerId: 7, teamId: 0 },
+        { id: 11, matchId: 3, playerId: 10, teamId: 0 },
+        { id: 12, matchId: 3, playerId: 4, teamId: 1 },
+        { id: 13, matchId: 3, playerId: 11, teamId: 1 },
+        { id: 14, matchId: 3, playerId: 1, teamId: 1 },
       ],
       matches: [
-        {id: 1, day: 1},
-        {id: 2, day: 1},
-        {id: 3, day: 1}
-        
+        { id: 1, dayId: 1 },
+        { id: 2, dayId: 1 },
+        { id: 3, dayId: 1 }
+
       ]
     }
   }
@@ -60,7 +65,7 @@ class App extends Component {
 
   render() {
 
-    
+
     return (
       <div className="container">
         <div className="row">
